@@ -86,7 +86,7 @@ public class DrbdXmlTest {
         assertThat(drbdXml.getParamShortDesc(option), is("OPTION1 (bytes)"));
         assertThat(drbdXml.getParamLongDesc(option), is("DESC1"));
         assertThat(drbdXml.getDefaultUnit(option), is("K"));
-        assertThat(drbdXml.getPossibleChoices(option), nullValue());
+        assertThat(drbdXml.getPossibleChoices(option), is(new Value[]{}));
         assertThat(drbdXml.getSection(option), is("COMMAND"));
         assertThat(drbdXml.checkParam(option, new StringValue("1023")), is(false));
         assertThat(drbdXml.checkParam(option, new StringValue("1024")), is(true));
@@ -120,7 +120,7 @@ public class DrbdXmlTest {
         assertThat(drbdXml.getParamShortDesc(option), is("OPTION3"));
         assertThat(drbdXml.getParamLongDesc(option), is("DESC3"));
         assertThat(drbdXml.getDefaultUnit(option), nullValue());
-        assertThat(drbdXml.getPossibleChoices(option), nullValue());
+        assertThat(drbdXml.getPossibleChoices(option), is(new Value[]{}));
         assertThat(drbdXml.getSection(option), is("COMMAND"));
         assertThat(drbdXml.getAccessType(option), is(AccessMode.ADMIN));
     }

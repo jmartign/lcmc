@@ -2504,21 +2504,21 @@ public class DomainInfo extends EditableInfo {
         } else if (VMParams.VM_PARAM_VIRSH_OPTIONS.equals(param)) {
             return VIRSH_OPTIONS;
         } else if (VMParams.VM_PARAM_CPUMATCH_MODEL.equals(param)) {
-            final Set<Value> models = new LinkedHashSet<Value>();
+            final Set<Value> models = new LinkedHashSet<>();
             models.add(new StringValue());
             for (final Host host : getBrowser().getClusterHosts()) {
                 models.addAll(host.getHostParser().getCPUMapModels());
             }
             return models.toArray(new Value[models.size()]);
         } else if (VMParams.VM_PARAM_CPUMATCH_VENDOR.equals(param)) {
-            final Set<Value> vendors = new LinkedHashSet<Value>();
+            final Set<Value> vendors = new LinkedHashSet<>();
             vendors.add(new StringValue());
             for (final Host host : getBrowser().getClusterHosts()) {
                 vendors.addAll(host.getHostParser().getCPUMapVendors());
             }
             return vendors.toArray(new Value[vendors.size()]);
         }
-        return POSSIBLE_VALUES.get(param);
+        return POSSIBLE_VALUES.getOrDefault(param, new Value[]{});
     }
 
     @Override

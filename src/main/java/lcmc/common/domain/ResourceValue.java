@@ -22,7 +22,6 @@
 
 
 package lcmc.common.domain;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -74,21 +73,18 @@ public class ResourceValue {
      * value it also removes empty string from values array.
      */
     protected List<Value> getPossibleChoices(final String param, final Value[] values) {
-        final List<Value> possibleChoices = new ArrayList<Value>();
-        if (values == null) {
-            return possibleChoices;
-        }
-        possibleChoices.addAll(Arrays.asList(values));
-        return possibleChoices;
+        return Arrays.asList(values);
     }
 
     public final void setPossibleChoices(final String param, final Value[] possibleChoices) {
         possibleChoicesMap.remove(param);
-        possibleChoicesMap.put(param, possibleChoices);
+        if (possibleChoices != null) {
+            possibleChoicesMap.put(param, possibleChoices);
+        }
     }
 
     public Value[] getPossibleChoices(final String param) {
-        final List<Value> possibleChoices = getPossibleChoices(param, possibleChoicesMap.get(param));
+        final List<Value> possibleChoices = getPossibleChoices(param, possibleChoicesMap.getOrDefault(param, new Value[]{}));
         return possibleChoices.toArray(new Value[possibleChoices.size()]);
     }
 

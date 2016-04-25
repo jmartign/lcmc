@@ -19,20 +19,20 @@
  */
 package lcmc.cluster.ui.widget;
 
-import java.awt.Color;
-import java.util.Map;
 import lcmc.common.domain.AccessMode;
+import lcmc.common.domain.Unit;
 import lcmc.common.domain.Value;
+import lcmc.common.ui.utils.MyButton;
 import lcmc.logger.Logger;
 import lcmc.logger.LoggerFactory;
-import lcmc.common.ui.utils.MyButton;
-import lcmc.common.domain.Unit;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Provider;
 import javax.inject.Singleton;
-import javax.swing.Icon;
+import javax.swing.*;
+import java.awt.*;
+import java.util.Map;
 
 @Named
 @Singleton
@@ -89,7 +89,7 @@ public final class WidgetFactory {
             /* type detection */
             if (units != null) {
                 type = Widget.Type.TEXTFIELDWITHUNIT;
-            } else if (items == null || items.length == 0) {
+            } else if (items.length == 0) {
                 type = Widget.Type.TEXTFIELD;
             } else if (items.length == 2) {
                 if (items[0] != null

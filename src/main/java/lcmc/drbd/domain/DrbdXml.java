@@ -622,11 +622,7 @@ public class DrbdXml {
 
     public Value[] getPossibleChoices(final String param) {
         final List<Value> items = getDrbdParam(param).items();
-        if (items == null) {
-            return null;
-        } else {
-            return items.toArray(new Value[items.size()]);
-        }
+        return items.toArray(new Value[items.size()]);
     }
 
     public boolean isRequired(final String param) {
@@ -764,9 +760,7 @@ public class DrbdXml {
                         getDrbdParam(param).longDesc(XMLTools.getText(optionInfo));
                     }
                 }
-                if (!items.isEmpty()) {
-                    getDrbdParam(param).items(items);
-                }
+                getDrbdParam(param).items(items);
                 getDrbdParam(param).type(type);
                 if (!GLOBAL_SECTION.equals(section)
                     && !parametersList.contains(param)) {

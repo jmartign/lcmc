@@ -21,6 +21,25 @@
  */
 package lcmc.vm.ui.resource;
 
+import lcmc.cluster.service.NetworkService;
+import lcmc.cluster.ui.resource.NetInfo;
+import lcmc.cluster.ui.widget.Widget;
+import lcmc.common.domain.AccessMode;
+import lcmc.common.domain.Application;
+import lcmc.common.domain.StringValue;
+import lcmc.common.domain.Value;
+import lcmc.common.domain.util.Tools;
+import lcmc.common.ui.Browser;
+import lcmc.common.ui.treemenu.TreeMenuController;
+import lcmc.common.ui.utils.SwingUtils;
+import lcmc.host.domain.Host;
+import lcmc.vm.domain.VmsXml;
+import lcmc.vm.domain.data.InterfaceData;
+import org.w3c.dom.Node;
+
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -28,27 +47,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-
-import lcmc.common.domain.AccessMode;
-import lcmc.common.domain.Application;
-import lcmc.common.ui.treemenu.TreeMenuController;
-import lcmc.common.ui.utils.SwingUtils;
-import lcmc.host.domain.Host;
-import lcmc.common.domain.StringValue;
-import lcmc.cluster.service.NetworkService;
-import lcmc.vm.domain.VmsXml;
-import lcmc.vm.domain.data.InterfaceData;
-import lcmc.common.domain.Value;
-import lcmc.common.ui.Browser;
-import lcmc.cluster.ui.resource.NetInfo;
-import lcmc.cluster.ui.widget.Widget;
-import lcmc.common.domain.util.Tools;
-import org.w3c.dom.Node;
 
 /**
  * This class holds info about Virtual Interfaces.
@@ -256,7 +254,7 @@ public final class InterfaceInfo extends HardwareInfo {
                 }
             }
         }
-        return POSSIBLE_VALUES.get(param);
+        return POSSIBLE_VALUES.getOrDefault(param, new Value[]{});
     }
 
     /** Returns section to which the specified parameter belongs. */

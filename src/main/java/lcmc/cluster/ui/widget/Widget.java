@@ -19,16 +19,16 @@
  */
 package lcmc.cluster.ui.widget;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.util.Map;
-import javax.swing.JLabel;
-import javax.swing.text.Document;
 import lcmc.common.domain.StringValue;
 import lcmc.common.domain.Value;
-import lcmc.common.ui.utils.MyButton;
 import lcmc.common.domain.util.Tools;
+import lcmc.common.ui.utils.MyButton;
 import lcmc.common.ui.utils.WidgetListener;
+
+import javax.swing.*;
+import javax.swing.text.Document;
+import java.awt.*;
+import java.util.Map;
 
 public interface Widget {
     enum Type {
@@ -43,7 +43,7 @@ public interface Widget {
 
     Type GUESS_TYPE = null;
     Value NO_DEFAULT = new StringValue(null);
-    Value[] NO_ITEMS = null;
+    Value[] NO_ITEMS = new Value[]{};
     String NO_REGEXP = null;
     Map<String, String> NO_ABBRV = null;
     MyButton NO_BUTTON = null;

@@ -197,7 +197,7 @@ public abstract class AbstractDrbdInfo extends EditableInfo {
             widgetAdd(param, prefix, paramWi);
         } else {
             paramWi = super.createWidget(param, prefix, width);
-            if (possibleChoices != null
+            if (possibleChoices.length > 0
                 && !getBrowser().getDrbdXml().isStringType(param)) {
                 paramWi.setEditable(false);
             }
